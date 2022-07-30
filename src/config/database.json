@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "interior_design",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "local_machine": {
+    "username": "root",
+    "password": "",
+    "database": "interior_design",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "interior_design",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

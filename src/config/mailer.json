@@ -1,0 +1,29 @@
+{
+    "local_machine": {
+        "service": "Gmail",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "",
+            "pass": ""
+        }
+    },
+    "development": {
+        "service": "Gmail",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "",
+            "pass": ""
+        }
+    },
+    "production": {
+        "service": "Gmail",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "",
+            "pass": ""
+        }
+    }
+}

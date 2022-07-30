@@ -1,0 +1,14 @@
+{
+    "local_machine": {
+        "port": 8000,
+        "jwtSecretKey": "jwtSecretKey"
+    },
+    "development": {
+        "port": 8000,
+        "jwtSecretKey": "jwtSecretKey"
+    },
+    "production": {
+        "port": 8000,
+        "jwtSecretKey": "jwtSecretKey"
+    }
+}
