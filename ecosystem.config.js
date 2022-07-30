@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: "interior_design_api",
-    script: "./src/server.js",
+    script: "./server.js",
     env: {
       NODE_ENV: "development",
     },
