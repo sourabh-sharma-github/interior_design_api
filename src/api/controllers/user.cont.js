@@ -4,26 +4,26 @@ const { random_otp, } = require('../../services/utils')
 
 const signUpWithEmail = async (req, res) => {
     try {
-        const { hoursTypeIds, favouriteStyleTypeIds } = req.body;
+        // const { hoursTypeIds, favouriteStyleTypeIds } = req.body;
         const otp = await random_otp()
-        const user = await createUser({ ...req.body, otp })
+        await createUser({ ...req.body, otp })
 
-        let user_house_types = new Array
-        hoursTypeIds.forEach(id => {
-            user_house_types.push({
-                masterId: id, userId: user.id
-            })
-        })
+        // let user_house_types = new Array
+        // hoursTypeIds.forEach(id => {
+        //     user_house_types.push({
+        //         masterId: id, userId: user.id
+        //     })
+        // })
 
-        let user_favourite_style_types = new Array
-        favouriteStyleTypeIds.forEach(id => {
-            user_favourite_style_types.push({
-                masterId: id, userId: user.id
-            })
-        })
+        // let user_favourite_style_types = new Array
+        // favouriteStyleTypeIds.forEach(id => {
+        //     user_favourite_style_types.push({
+        //         masterId: id, userId: user.id
+        //     })
+        // })
 
-        await createUserHouseTypes(user_house_types)
-        await createUserFavouriteStyles(user_favourite_style_types)
+        // await createUserHouseTypes(user_house_types)
+        // await createUserFavouriteStyles(user_favourite_style_types)
 
         return __SSR(res, "Signup successfully, Please verify OTP to proceed")
     } catch (error) {
