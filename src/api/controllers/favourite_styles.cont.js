@@ -10,6 +10,7 @@ const createUpdateDeleteFavouriteStyles = async (req, res) => {
     }
 }
 
+
 const getFavouriteStyles = async (req, res) => {
     try {
         const rows = await favouriteStyles();
