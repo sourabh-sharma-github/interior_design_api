@@ -19,7 +19,7 @@ const getBlogs = async (req, res) => {
         }
         return __SSR(res, "Blogs", { rows })
     } catch (error) {
-        return __SFR(res, 403, "Erro while updating data")
+        return __SFR(res, 403, "No data found")
     }
 }
 

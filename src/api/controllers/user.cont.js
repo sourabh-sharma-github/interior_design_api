@@ -1,12 +1,23 @@
 const { createUser, findUserWithOtp, updateOtp, findUserWithEmailPass, updatePassword, findWithEmail, createUserHouseTypes, createUserFavouriteStyles, findWithEmailOrSocailId, updateUser, getUserProfile, softDeleteUser, getUsersForAdmin } = require('../repositories/user.repo');
 const { __SSR, __SFR } = require('../../services/req-res.service')
 const { random_otp, } = require('../../services/utils')
+// const { _SEND_EMAIL } = require('../../services/email.service')
 
 const signUpWithEmail = async (req, res) => {
     try {
         // const { hoursTypeIds, favouriteStyleTypeIds } = req.body;
+        const { email, firstName } = req.body;
         const otp = await random_otp()
         await createUser({ ...req.body, otp })
+        // await _SEND_EMAIL({
+        //     to: email,
+        //     subject: "Forgot your studeo account password ?",
+        //     html: `
+        //     <p>Hi ${firstName} </p>
+        //     </br>
+        //     <h3>Your OTP is: </h3>
+        //     <h1> ${otp} </h1>`
+        // })
 
         // let user_house_types = new Array
         // hoursTypeIds.forEach(id => {

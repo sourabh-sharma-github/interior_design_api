@@ -10,7 +10,7 @@ const authenticate = passport.authenticate('jwt', { session: false });
 const { createUpdateDeleteBlogs, getBlogs } = require('../controllers/blogs.cont');
 const { vCreateUpdateDeleteBlogs, vGetBlogs } = require('../validations/blogs.vali');
 
-router.put('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteBlogs), createUpdateDeleteBlogs);
+router.post('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteBlogs), createUpdateDeleteBlogs);
 router.post('/', authenticate, adminAccessOnly,validate(vGetBlogs), getBlogs);
 
 

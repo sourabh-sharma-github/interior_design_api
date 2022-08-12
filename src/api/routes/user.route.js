@@ -17,10 +17,10 @@ router.post('/signin', validate(vEmailSignIn), userSignIn);
 router.post('/admin-signin', validate(vEmailSignIn), adminSigninIn);
 router.post('/forgot-password', validate(vForgotPassword), forgotPassword);
 router.post('/change-password', validate(vChangePassword), changePassword);
-router.post('/my-profile', authenticate, myProfile);
-router.patch('/edit-profile', authenticate, validate(vEditProfile), editProfile);
+router.get('/my-profile', authenticate, myProfile);
+router.post('/edit-profile', authenticate, validate(vEditProfile), editProfile);
 router.delete('/delete', authenticate, adminAccessOnly, validate(vUserIdPayload), deleteUser);
-router.patch('/mark-as-responded', authenticate, adminAccessOnly, validate(vUserIdPayload), markedAsResponded);
+router.post('/mark-as-responded', authenticate, adminAccessOnly, validate(vUserIdPayload), markedAsResponded);
 router.post('/admin/users', authenticate, adminAccessOnly, validate(vGetUserListForAdmin), getUserListForAdmin);
 
 

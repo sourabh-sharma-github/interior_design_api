@@ -10,7 +10,7 @@ const authenticate = passport.authenticate('jwt', { session: false });
 const { createUpdateDeleteFavouriteStyles, getFavouriteStyles } = require('../controllers/favourite_styles.cont');
 const { vCreateUpdateDeleteFavouriteStyles } = require('../validations/favourite_styles.vali');
 
-router.put('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteFavouriteStyles), createUpdateDeleteFavouriteStyles);
+router.post('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteFavouriteStyles), createUpdateDeleteFavouriteStyles);
 router.post('/', authenticate, adminAccessOnly, getFavouriteStyles);
 
 

@@ -10,7 +10,7 @@ const authenticate = passport.authenticate('jwt', { session: false });
 const { createUpdateDeleteVideos, getVideos } = require('../controllers/videos.cont');
 const { vCreateUpdateDeleteVideos, vVideos } = require('../validations/videos.vali');
 
-router.put('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteVideos), createUpdateDeleteVideos);
+router.post('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteVideos), createUpdateDeleteVideos);
 router.post('/', authenticate, adminAccessOnly, validate(vVideos), getVideos);
 
 
