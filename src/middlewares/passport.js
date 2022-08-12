@@ -9,10 +9,9 @@ const jwtOptions = {
     secretOrKey: jwtSecretKey,
 };
 
-module.exports = passport.use(new JwtStrategy(jwtOptions, async (payload, next) => {
-    const { user_id } = payload;
-    const user = await User.findByPk({ user_id });
-
+module.exports = passport.use(new Strategy(jwtOptions, async (payload, next, req, res) => {
+    const { id } = payload;
+    const user = await User.findByPk(id);
     if (user) {
         next(null, user);
     } else {
