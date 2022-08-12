@@ -1,4 +1,4 @@
-const { createUser, findUserWithOtp, updateOtp, findUserWithEmailPass, updatePassword, findWithEmail, createUserHouseTypes, createUserFavouriteStyles, findWithEmailOrSocailId, updateUser } = require('../repositories/user.repo');
+const { createUser, findUserWithOtp, updateOtp, findUserWithEmailPass, updatePassword, findWithEmail, createUserHouseTypes, createUserFavouriteStyles, findWithEmailOrSocailId, updateUser, getUserProfile, softDeleteUser, getUsersForAdmin } = require('../repositories/user.repo');
 const { __SSR, __SFR } = require('../../services/req-res.service')
 const { random_otp, } = require('../../services/utils')
 
@@ -128,6 +128,65 @@ const changePassword = async (req, res) => {
     }
 }
 
+const myProfile = async (req, res) => {
+    try {
+        const { id } = req.user;
+        const user = await getUserProfile(id)
+        return __SSR(res, "My profile.", user)
+    } catch (error) {
+        return __SFR(res, 403, error.message)
+    }
+}
+
+const editProfile = async (req, res) => {
+    try {
+        const { id } = req.user;
+        await updateUser(req.body, id)
+        const user = await getUserProfile(id)
+        return __SSR(res, "Profile updated.", user)
+
+    } catch (error) {
+        return __SFR(res, 403, error.message)
+    }
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        await softDeleteUser(userId)
+        return __SSR(res, "User deleted")
+    } catch (error) {
+        return __SFR(res, 403, error.message)
+    }
+}
+
+const markedAsResponded = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        await updateUser({ adminResponded: true }, userId)
+        return __SSR(res, "User updated")
+    } catch (error) {
+        return __SFR(res, 403, error.message)
+    }
+}
+
+
+const getUserListForAdmin = async (req, res) => {
+    try {
+        const { limit, offset, search } = req.body
+        const { count, rows } = await getUsersForAdmin(limit, offset, search)
+        if (rows.length == 0) {
+            throw new Error('List not found');
+        }
+        return __SSR(res, "Users", {
+            count, rows
+        })
+    } catch (error) {
+        return __SFR(res, 404, error.message)
+    }
+}
+
+
 module.exports = {
-    signUpWithEmail, socialSignUp, verifyOtp, userSignIn, adminSigninIn, forgotPassword, changePassword
+    signUpWithEmail, socialSignUp, verifyOtp, userSignIn, adminSigninIn, forgotPassword, changePassword, myProfile, editProfile, deleteUser, markedAsResponded, getUsersForAdmin, getUserListForAdmin
 }

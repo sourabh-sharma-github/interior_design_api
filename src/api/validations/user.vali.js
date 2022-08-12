@@ -8,11 +8,11 @@ module.exports = {
             password: Joi.string().required(),
             phone: Joi.number().min(10).required(),
             gender: Joi.number().valid(1, 2).required(),
-            country: Joi.string().required(),
-            about: Joi.string().required(),
-            hoursTypeIds: Joi.array().min(1).required(),
-            favouriteStyleTypeIds: Joi.array().min(1).required(),
-            userImage: Joi.string().required(),
+            country: Joi.string().optional(),
+            about: Joi.string().optional(),
+            hoursTypeIds: Joi.array().min(1).optional(),
+            favouriteStyleTypeIds: Joi.array().min(1).optional(),
+            userImage: Joi.string().optional(),
         }).required()
     },
     vSocialSignUp: {
@@ -47,9 +47,31 @@ module.exports = {
         body: Joi.object({
             changeBy: Joi.number().valid(1, 2).required(),
             newPassword: Joi.string().required(),
-            otp: Joi.when('changeBy', {is: 1, then: Joi.number().required()}),
-            email: Joi.when('changeBy', {is: 2, then: Joi.string().email().required(), otherwise: Joi.string().empty()}),
-            oldPassword: Joi.when('changeBy', {is: 2, then: Joi.string().required(), otherwise: Joi.string().empty()}),
+            otp: Joi.when('changeBy', { is: 1, then: Joi.number().required() }),
+            email: Joi.when('changeBy', { is: 2, then: Joi.string().email().required(), otherwise: Joi.string().empty() }),
+            oldPassword: Joi.when('changeBy', { is: 2, then: Joi.string().required(), otherwise: Joi.string().empty() }),
+        }).required()
+    },
+    vEditProfile: {
+        body: Joi.object({
+            firstName: Joi.string().required(),
+            lastName: Joi.string().required(),
+            phone: Joi.number().required(),
+            country: Joi.string().required(),
+            about: Joi.string().required(),
+            userImage: Joi.string().required(),
+        }).required()
+    },
+    vUserIdPayload: {
+        body: Joi.object({
+            userId: Joi.number().required(),
+        }).required()
+    },
+    vGetUserListForAdmin: {
+        body: Joi.object({
+            search: Joi.string().optional(),
+            limit: Joi.number().required(),
+            offset: Joi.number().required(),
         }).required()
     }
 }

@@ -78,6 +78,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             defaultValue: 2,
             comment: "1=>admin 2=>user"
+        },
+        adminResponded: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: false,
         }
     }, {
         paranoid: true,
@@ -87,7 +91,7 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     User.prototype.getJWT = function () {
-        return "Bearer " + jwt.sign({ user_id: this.user_id }, jwtSecretKey);
+        return "Bearer " + jwt.sign({ id: this.id }, jwtSecretKey);
     };
 
     return User;

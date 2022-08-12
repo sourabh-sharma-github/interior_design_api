@@ -61,6 +61,59 @@ const createUserFavouriteStyles = async (array) => {
     return await UserFavouriteStyles.bulkCreate(array)
 }
 
+const getUserProfile = async (id) => {
+    return await User.findOne({
+        where: { id },
+        attributes: {
+            exclude: ['password', 'socialId', 'otp', 'updatedAt', 'deletedAt']
+        }
+    })
+}
+
+const softDeleteUser = async (id) => {
+    return await User.destroy({
+        where: { id }
+    })
+}
+
+const getUsersForAdmin = async (limit, offset, search) => {
+    let where = new Object;
+    if (search) {
+        where = {
+            [Op.or]: [{
+                firstName: {
+                    [Op.like]: `%${search}%`
+                }
+            }, {
+                lastName: {
+                    [Op.like]: `%${search}%`
+                }
+            }, {
+                email: {
+                    [Op.like]: `%${search}%`
+                }
+            }, {
+                phone: {
+                    [Op.like]: `%${search}%`
+                }
+            }, {
+                country: {
+                    [Op.like]: `%${search}%`
+                }
+            }]
+        }
+    }
+    where['userType'] = 2
+    return await User.findAndCountAll({
+        where,
+        attributes: {
+            exclude: ['updatedAt', 'deletedAt', 'password']
+        },
+        limit,
+        offset
+    })
+}
+
 module.exports = {
-    createUser, findUserWithOtp, updateOtp, findUserWithEmailPass, updatePassword, findWithEmail, createUserHouseTypes, createUserFavouriteStyles, findWithEmailOrSocailId, updateUser
+    createUser, findUserWithOtp, updateOtp, findUserWithEmailPass, updatePassword, findWithEmail, createUserHouseTypes, createUserFavouriteStyles, findWithEmailOrSocailId, updateUser, getUserProfile, softDeleteUser, getUsersForAdmin
 }
