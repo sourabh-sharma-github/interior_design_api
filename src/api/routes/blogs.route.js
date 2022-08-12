@@ -11,7 +11,7 @@ const { createUpdateDeleteBlogs, getBlogs } = require('../controllers/blogs.cont
 const { vCreateUpdateDeleteBlogs, vGetBlogs } = require('../validations/blogs.vali');
 
 router.put('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteBlogs), createUpdateDeleteBlogs);
-router.get('/', authenticate, adminAccessOnly,validate(vGetBlogs), getBlogs);
+router.post('/', authenticate, adminAccessOnly,validate(vGetBlogs), getBlogs);
 
 
 module.exports = router;

@@ -11,7 +11,7 @@ const { createUpdateDeleteVideos, getVideos } = require('../controllers/videos.c
 const { vCreateUpdateDeleteVideos, vVideos } = require('../validations/videos.vali');
 
 router.put('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteVideos), createUpdateDeleteVideos);
-router.get('/', authenticate, adminAccessOnly, validate(vVideos), getVideos);
+router.post('/', authenticate, adminAccessOnly, validate(vVideos), getVideos);
 
 
 module.exports = router;

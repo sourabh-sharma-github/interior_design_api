@@ -11,7 +11,7 @@ const { createUpdateDeleteFavouriteStyles, getFavouriteStyles } = require('../co
 const { vCreateUpdateDeleteFavouriteStyles } = require('../validations/favourite_styles.vali');
 
 router.put('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteFavouriteStyles), createUpdateDeleteFavouriteStyles);
-router.get('/', authenticate, adminAccessOnly, getFavouriteStyles);
+router.post('/', authenticate, adminAccessOnly, getFavouriteStyles);
 
 
 module.exports = router;
