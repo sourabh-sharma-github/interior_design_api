@@ -1,11 +1,10 @@
 const app = require("./app");
 const http = require("http");
-const server = http.createServer(app);
 const db = require("./models");
 const pe = require("parse-error");
 const { port } = require('./config/index')['server']
 
-const httpsServer = require('https');
+const https = require('https');
 const fs = require('fs');
 
 const options = {
@@ -13,6 +12,7 @@ const options = {
   cert: fs.readFileSync('cert.pem')
 };
 
+const server = https.createServer(options, app);
 
 db.sequelize
 .authenticate()
@@ -26,11 +26,8 @@ db.sequelize
   .catch(err => console.error('unable to connect to the database', err));
   
   try {
-    // server.listen(port, () => {
-    //   console.log(`🚀🚀 server started on port:: ${port} 🚀🚀`);
-    // })
-    httpsServer.listen(3001, () => {
-      console.log(`🚀🚀 server started on port (https):: ${3001} 🚀🚀`);
+    server.listen(port, () => {
+      console.log(`🚀🚀 server started on port:: ${port} 🚀🚀`);
     })
   } catch (error) {
     console.error("An error occured: ", error);
