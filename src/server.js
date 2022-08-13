@@ -30,7 +30,7 @@ db.sequelize
     //   console.log(`🚀🚀 server started on port:: ${port} 🚀🚀`);
     // })
     httpsServer.listen(3001, () => {
-      console.log(`🚀🚀 server started on port:: ${3001} 🚀🚀`);
+      console.log(`🚀🚀 server started on port (https):: ${3001} 🚀🚀`);
     })
   } catch (error) {
     console.error("An error occured: ", error);
