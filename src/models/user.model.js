@@ -33,7 +33,7 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: null
         },
         phone: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             defaultValue: null,
             validate: {
                 isNumeric: true,
