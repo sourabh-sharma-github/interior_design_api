@@ -4,15 +4,16 @@ const db = require("./models");
 const pe = require("parse-error");
 const { port } = require('./config/index')['server']
 
-const https = require('https');
-const fs = require('fs');
+const server = http.createServer(app);
+// const https = require('https');
+// const fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+// const options = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
 
-const server = https.createServer(options, app);
+// const server = https.createServer(options, app);
 
 db.sequelize
 .authenticate()
