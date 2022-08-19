@@ -19,7 +19,9 @@ const blogs = async (limit, offset, search) => {
         where,
         limit,
         offset,
-        attributes: ['id', 'title', 'createdAt']
+        attributes: {
+            exclude: ['updatedAt', 'deletedAt']
+        }
     })
 }
 
