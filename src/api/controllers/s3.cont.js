@@ -38,7 +38,7 @@ const createImageUrl = async function (req, res) {
                 //     url: data.Location
                 // });
                 return res.json({
-                    body: data.Location
+                    imageUrl: data.Location
                 })
             });
         }
