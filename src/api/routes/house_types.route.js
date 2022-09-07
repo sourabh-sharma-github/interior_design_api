@@ -11,7 +11,7 @@ const { createUpdateDeleteHouseType, getHouseTypes } = require('../controllers/h
 const { vCreateUpdateDeleteHouseType } = require('../validations/house_types.vali');
 
 router.post('/upsert', authenticate, adminAccessOnly, validate(vCreateUpdateDeleteHouseType), createUpdateDeleteHouseType);
-router.post('/', authenticate, getHouseTypes);
+router.post('/', getHouseTypes);
 
 
 module.exports = router;
