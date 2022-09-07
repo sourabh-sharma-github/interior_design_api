@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require("express");
+const fileupload = require("express-fileupload");
 const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
@@ -12,6 +13,7 @@ const passport = require("passport");
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+app.use(fileupload());
 app.use(morgan("dev"));
 app.use(cors());
 app.use(passport.initialize());
