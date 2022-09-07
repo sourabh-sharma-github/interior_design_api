@@ -14,17 +14,18 @@ const createImageUrl = async function (req, res) {
         if (!req.files) {
             throw new Error("Something went wrong while uploading file.");
         } else {
-            const { file } = req.files;
-            const { name, data, mimetype } = file;
-            const name_arr = name.split(".");
-            const ext = name_arr[name_arr.length - 1];
-            const new_name = new Date() + "." + ext;
+            let file = req.files.file;
+            let name = file.name;
+            let name_arr = name.split(".");
+            let ext = name_arr[name_arr.length - 1];
+            let new_name = new Date() + "." + ext;
 
             const params = {
                 Bucket: "renoguru-dev",
+                // Key: file.name,
                 Key: new_name,
-                Body: data,
-                ContentType: mimetype,
+                Body: file.data,
+                ContentType: file.mimetype,
                 ACL: 'public-read'
             };
 
