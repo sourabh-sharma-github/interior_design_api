@@ -39,6 +39,7 @@ const createImageUrl = async function (req, res) {
             });
         }
     } catch (error) {
+        console.error("error", error)
         return __SFR(res, 400, error.message, error)
     }
 }
