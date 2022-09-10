@@ -38,7 +38,7 @@ const signUpWithEmail = async (req, res) => {
 
         return __SSR(res, "Signup successfully, Please verify OTP to proceed")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, "Email Id already exist!", error)
     }
 }
 
