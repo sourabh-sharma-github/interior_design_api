@@ -89,13 +89,14 @@ module.exports = (sequelize, Sequelize) => {
         tableName: "enquiries"
     });
 
-    // Enquiries.associate = (models) => {
-    //     Enquiries.hasOne(models.User, {
-    //         sourceKey: 'userId',
-    //         foreignKey: 'id',
-    //         as:'user',
-    //     })
-    // }
+    Enquiries.associate = (models) => {
+        Enquiries.hasOne(models.User, {
+            sourceKey: 'userId',
+            foreignKey: 'id',
+            as:'user',
+            constraints: false
+        })
+    }
 
 
     return Enquiries;
