@@ -10,7 +10,7 @@ const createEnquiry = async (req, res) => {
         });
         return __SSR(res, "enquiry submitted")
     } catch (error) {
-        return __SFR(res, 403, "Error while submitting enquiry")
+        return __SFR(res, 403, error.message, error)
     }
 }
 
@@ -23,7 +23,7 @@ const getEnquiries = async (req, res) => {
         }
         return __SSR(res, "Enquiries", { count, rows })
     } catch (error) {
-        return __SFR(res, 403, "No data found", error)
+        return __SFR(res, 403, error.message, error)
     }
 }
 

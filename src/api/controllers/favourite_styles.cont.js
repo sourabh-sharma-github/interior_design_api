@@ -6,7 +6,7 @@ const createUpdateDeleteFavouriteStyles = async (req, res) => {
         await updateFavouriteStyles(req.body);
         return __SSR(res, "Updated successfully")
     } catch (error) {
-        return __SFR(res, 403, "Erro while updating data")
+        return __SFR(res, 403, error.message, error)
     }
 }
 
@@ -18,7 +18,7 @@ const getFavouriteStyles = async (req, res) => {
         }
         return __SSR(res, "Favourite styles", { rows })
     } catch (error) {
-        return __SFR(res, 403, "Erro while updating data")
+        return __SFR(res, 403, error.message, error)
     }
 }
 
