@@ -1,4 +1,4 @@
-const { updateBlogs, blogs } = require('../repositories/blogs.repo');
+const { updateBlogs, blogs, blog } = require('../repositories/blogs.repo');
 const { __SSR, __SFR } = require('../../services/req-res.service')
 
 const createUpdateDeleteBlogs = async (req, res) => {
@@ -12,9 +12,9 @@ const createUpdateDeleteBlogs = async (req, res) => {
 
 const getBlogs = async (req, res) => {
     try {
-        const {limit, offset, search} = req.body;
+        const { limit, offset, search } = req.body;
         const rows = await blogs(limit, offset, search);
-        if (rows.length == 0){
+        if (rows.length == 0) {
             throw new Error("Not found")
         }
         return __SSR(res, "Blogs", { rows })
@@ -23,6 +23,16 @@ const getBlogs = async (req, res) => {
     }
 }
 
+const getBlog = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data= await blog(id);
+        return __SSR(res, "Blog", data)
+    } catch (error) {
+        return __SFR(res, 403, error.message, error)
+    }
+}
+
 module.exports = {
-    createUpdateDeleteBlogs, getBlogs
+    createUpdateDeleteBlogs, getBlogs, getBlog
 }

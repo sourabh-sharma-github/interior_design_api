@@ -7,6 +7,7 @@ const blogsRouter = require('./blogs.route')
 const videosRouter = require('./videos.route')
 const enquiryRouter = require('./enquiry.route')
 const s3Router = require('./s3.route')
+const advertisementRouter = require('./advertisements.route')
 
 router.use("/auth", authenticationRouter)
 router.use("/house-types", houseTypesRouter)
@@ -15,6 +16,7 @@ router.use("/blogs", blogsRouter)
 router.use("/videos", videosRouter)
 router.use('/enquiry', enquiryRouter)
 router.use('/s3', s3Router)
+router.use('/advertisements', advertisementRouter)
 
 
 module.exports = router;

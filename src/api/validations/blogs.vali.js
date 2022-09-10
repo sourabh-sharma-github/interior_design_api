@@ -15,5 +15,5 @@ module.exports = {
             offset: Joi.number().required(),
             search: Joi.string().optional()
         }).required()
-    }
+    },
 }

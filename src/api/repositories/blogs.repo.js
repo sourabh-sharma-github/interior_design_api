@@ -25,6 +25,10 @@ const blogs = async (limit, offset, search) => {
     })
 }
 
+const blog = async (pk)=> {
+    return await Blogs.findByPk(pk)
+}
+
 module.exports = {
-    updateBlogs, blogs
+    updateBlogs, blogs, blog
 }
