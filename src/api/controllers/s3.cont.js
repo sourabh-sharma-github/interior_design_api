@@ -33,9 +33,9 @@ const createImageUrl = async function (req, res) {
                     console.error("Error while uploading file:: ",  err );
                     throw new Error(err)
                 }
-                return __SSR(res,"Uploaded successfully", {
-                    url: data.Location
-                });
+                return res.json({
+                    imageUrl: data.Location
+                })
             });
         }
     } catch (error) {
