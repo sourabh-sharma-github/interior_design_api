@@ -15,7 +15,7 @@ module.exports = {
             userEnquiryType: Joi.number().valid(0, 1).required(),
             fullName: Joi.when('userEnquiryType', { is: 1, then: Joi.string().required() }),
             email: Joi.when('userEnquiryType', { is: 1, then: Joi.string().required() }),
-            phone: Joi.when('userEnquiryType', { is: 1, then: Joi.number().required() }),
+            phone: Joi.when('userEnquiryType', { is: 1, then: Joi.string().required() }),
             otherInformation: Joi.when('userEnquiryType', { is: 1, then: Joi.string().required() }),
         }).required()
     },

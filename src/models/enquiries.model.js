@@ -72,11 +72,8 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: null
         },
         phone: {
-            type: Sequelize.INTEGER,
-            defaultValue: null,
-            validate: {
-                isNumeric: true,
-            }
+            type: Sequelize.STRING,
+            defaultValue: null
         },
         otherInformation:{
             type: Sequelize.STRING,
