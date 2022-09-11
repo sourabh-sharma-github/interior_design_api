@@ -1,6 +1,6 @@
 const { Joi } = require('express-validation');
 module.exports = {
-    vCreateUpdateDeleteInspirations: {
+    vCreateUpdateDeleteTrendings: {
         body: Joi.object({
             id: Joi.number().optional(),
             image: Joi.string().required(),
@@ -10,7 +10,7 @@ module.exports = {
             deletedAt: Joi.string().optional(),
         }).required()
     },
-    vGetInspirations: {
+    vGetTrendings: {
         body: Joi.object({
             limit: Joi.number().required(),
             offset: Joi.number().required(),

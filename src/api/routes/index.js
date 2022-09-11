@@ -9,6 +9,7 @@ const enquiryRouter = require('./enquiry.route')
 const s3Router = require('./s3.route')
 const advertisementRouter = require('./advertisements.route')
 const inspirationRouter = require('./inspirations.route')
+const trendingRouter = require('./trending.route')
 
 router.use("/auth", authenticationRouter)
 router.use("/house-types", houseTypesRouter)
@@ -19,6 +20,7 @@ router.use('/enquiry', enquiryRouter)
 router.use('/s3', s3Router)
 router.use('/advertisements', advertisementRouter)
 router.use('/inspirations', inspirationRouter)
+router.use('/trendings', trendingRouter)
 
 
 module.exports = router;
