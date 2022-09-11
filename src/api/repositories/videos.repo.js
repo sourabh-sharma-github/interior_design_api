@@ -19,7 +19,7 @@ const videos = async (limit, offset, search) => {
         where,
         limit,
         offset,
-        attributes: ['id', 'title', 'createdAt']
+        // attributes: ['id', 'title', 'createdAt']
     })
 }
 
