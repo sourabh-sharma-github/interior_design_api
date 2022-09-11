@@ -4,8 +4,8 @@
         "port": 465,
         "secure": true,
         "auth": {
-            "user": "",
-            "pass": ""
+            "user": "renogurudesigner@gmail.com",
+            "pass": "wmnrddewgnmoquvl"
         }
     },
     "development": {
@@ -13,8 +13,8 @@
         "port": 465,
         "secure": true,
         "auth": {
-            "user": "",
-            "pass": ""
+            "user": "renogurudesigner@gmail.com",
+            "pass": "wmnrddewgnmoquvl"
         }
     },
     "production": {
@@ -22,8 +22,8 @@
         "port": 465,
         "secure": true,
         "auth": {
-            "user": "",
-            "pass": ""
+            "user": "renogurudesigner@gmail.com",
+            "pass": "wmnrddewgnmoquvl"
         }
     }
 }
