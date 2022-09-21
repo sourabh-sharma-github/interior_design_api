@@ -1,4 +1,4 @@
-const { updateInspirations, inspirationsData, inspirationData } = require('../repositories/inspirations.model');
+const { updateInspirations, inspirationsData, inspirationData } = require('../repositories/inspirations.repo');
 const { __SSR, __SFR } = require('../../services/req-res.service')
 
 const createUpdateDeleteInspirations = async (req, res) => {

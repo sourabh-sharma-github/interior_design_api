@@ -6,7 +6,7 @@ const createUpdateDeleteVideos = async (req, res) => {
         await updateVideos(req.body);
         return __SSR(res, "Updated successfully")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -19,7 +19,7 @@ const getVideos = async (req, res) => {
         }
         return __SSR(res, "Videos", { rows })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 

@@ -38,7 +38,7 @@ const signUpWithEmail = async (req, res) => {
 
         return __SSR(res, "Signup successfully, Please verify OTP to proceed")
     } catch (error) {
-        return __SFR(res, 403, "Email Id already exist !", error)
+        return __SFR(res, 403, "Email Id already exist !")
     }
 }
 
@@ -57,7 +57,7 @@ const socialSignUp = async (req, res) => {
             token
         })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -73,7 +73,7 @@ const verifyOtp = async (req, res) => {
             token
         })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -88,7 +88,7 @@ const userSignIn = async (req, res) => {
             token
         })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -105,7 +105,7 @@ const adminSigninIn = async (req, res) => {
             token
         })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -118,7 +118,7 @@ const forgotPassword = async (req, res) => {
         await updateOtp(user.id, otp)
         return __SSR(res, "OTP sent to your email.")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -135,7 +135,7 @@ const changePassword = async (req, res) => {
         await updateOtp(user.id, null)
         return __SSR(res, "Password changed.")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -145,7 +145,7 @@ const myProfile = async (req, res) => {
         const user = await getUserProfile(id)
         return __SSR(res, "My profile.", user)
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -157,7 +157,7 @@ const editProfile = async (req, res) => {
         return __SSR(res, "Profile updated.", user)
 
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -167,7 +167,7 @@ const deleteUser = async (req, res) => {
         await softDeleteUser(userId)
         return __SSR(res, "User deleted")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -177,7 +177,7 @@ const markedAsResponded = async (req, res) => {
         await updateUser({ adminResponded: true }, userId)
         return __SSR(res, "User updated")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -193,7 +193,7 @@ const getUserListForAdmin = async (req, res) => {
             count, rows
         })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 

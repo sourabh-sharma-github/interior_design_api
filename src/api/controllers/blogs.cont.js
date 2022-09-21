@@ -6,7 +6,7 @@ const createUpdateDeleteBlogs = async (req, res) => {
         await updateBlogs(req.body);
         return __SSR(res, "Updated successfully")
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -19,7 +19,7 @@ const getBlogs = async (req, res) => {
         }
         return __SSR(res, "Blogs", { rows })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
@@ -29,7 +29,7 @@ const getBlog = async (req, res) => {
         const data= await blog(id);
         return __SSR(res, "Blog", data)
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 

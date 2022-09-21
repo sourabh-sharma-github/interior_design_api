@@ -18,7 +18,7 @@ const getAdvertisements = async (req, res) => {
         }
         return __SSR(res, "Advertisements", { rows })
     } catch (error) {
-        return __SFR(res, 403, error.message, error)
+        return __SFR(res, 403, error.message)
     }
 }
 
