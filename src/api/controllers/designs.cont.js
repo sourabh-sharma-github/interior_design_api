@@ -212,7 +212,19 @@ const getDesigns = async (req, res) => {
     }
 }
 
+const getDesigners = async (req, res)=>{
+    try {
+
+        const { count, rows } = await Designer.findAndCountAll()
+        return __SSR(res, "Designers", {
+            count, rows
+        });
+    } catch (error) {
+        return __SFR(res, 400, error.message, error)
+    }
+}
+
 module.exports = {
     likeUnlikeDesign, viewDesign, createDesigner, getDesigner, createDesignerReview,
-    getDesignerReviews, addDesign, getDesigns
+    getDesignerReviews, addDesign, getDesigns, getDesigners
 }

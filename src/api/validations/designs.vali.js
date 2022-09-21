@@ -61,9 +61,17 @@ module.exports = {
     },
     vGetDesigns: {
         body: Joi.object({
+            limit: Joi.number().required(),
+            offset: Joi.number().required(),
             designerId: Joi.number().optional(),
             propertyTypeId: Joi.number().optional(),
             trendingTypes: Joi.array().items(Number).min(1).optional(),
         }).required()
+    },
+    vGetDesigners: {
+        body: Joi.object({
+            limit: Joi.number().required(),
+            offset: Joi.number().required(),
+        })
     }
 }
