@@ -6,9 +6,15 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             type: Sequelize.INTEGER
         },
-        type: {
+        title: {
             type: Sequelize.STRING,
-        }
+            allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'House type title required'
+                }
+            }
+        },
     }, {
         paranoid: true,
         deletedAt: "deletedAt",
