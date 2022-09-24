@@ -1,4 +1,4 @@
-const { upsertPropertyTypes, propertyTypes } = require('../repositories/house_types.repo');
+const { upsertPropertyTypes, propertyTypes } = require('../repositories/property_types.repo');
 const { __SSR, __SFR } = require('../../services/req-res.service')
 
 const createUpdateDeletePropertyType = async (req, res) => {
