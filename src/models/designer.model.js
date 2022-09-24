@@ -14,7 +14,31 @@ module.exports = (sequelize, Sequelize) => {
         },
         description: {
             type: Sequelize.TEXT
-        }
+        },
+        email: {
+            type: Sequelize.STRING
+        },
+        address: {
+            type: Sequelize.STRING
+        },
+        phoneNumber: {
+            type: Sequelize.STRING
+        },
+        logo: {
+            type: Sequelize.STRING
+        },
+        averageRating: {
+            type: Sequelize.STRING
+        },
+        totalReviewCount: {
+            type: Sequelize.INTEGER
+        },
+        totalDesigns: {
+            type: Sequelize.INTEGER
+        },
+        totalPhotosUploaded: {
+            type: Sequelize.INTEGER
+        },
     }, {
         paranoid: true,
         deletedAt: "deletedAt",

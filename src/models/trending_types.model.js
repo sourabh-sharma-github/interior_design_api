@@ -6,14 +6,14 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             type: Sequelize.INTEGER
         },
-        type: {
+        title: {
             type: Sequelize.STRING,
-        }
+        },
     }, {
         paranoid: true,
         deletedAt: "deletedAt",
         timestamps: true,
-        tableName: "trendingTypes"
+        tableName: "trending_types"
     });
     return TrendingTypes;
 };

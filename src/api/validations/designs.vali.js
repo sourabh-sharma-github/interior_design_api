@@ -5,6 +5,10 @@ module.exports = {
             coverImage: Joi.string().required(),
             companyName: Joi.string().required(),
             description: Joi.string().required(),
+            email: Joi.string().required(),
+            address: Joi.string().required(),
+            phoneNumber: Joi.string().required(),
+            logo: Joi.string().required(),
         }).required()
     },
     vDesignerId: {
@@ -51,7 +55,7 @@ module.exports = {
             images: Joi.array().items({
                 imageUrl: Joi.string().required(),
                 imageInspirationType: Joi.number().required()
-            }).min(1).required(), 
+            }).min(1).required(),
             trendingTypes: Joi.array().items(Number).min(1).required(),
             propertyTypeId: Joi.number().required(),
             packageIncludes: Joi.string().required(),
