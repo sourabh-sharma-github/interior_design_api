@@ -11,6 +11,7 @@ const advertisementRouter = require('./advertisements.route')
 const inspirationRouter = require('./inspirations.route')
 const trendingRouter = require('./trending.route')
 const designsRouter = require('./designs.route')
+const propertyTypesRouter = require('./property_types.route')
 
 router.use("/auth", authenticationRouter)
 router.use("/house-types", houseTypesRouter)
@@ -23,6 +24,7 @@ router.use('/advertisements', advertisementRouter)
 router.use('/inspirations', inspirationRouter)
 router.use('/trendings', trendingRouter)
 router.use('/designs', designsRouter)
+router.use("/property-types", propertyTypesRouter)
 
 
 module.exports = router;
