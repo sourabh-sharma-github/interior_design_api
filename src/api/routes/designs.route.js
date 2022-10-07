@@ -13,12 +13,12 @@ const { vCreateDesignerReview, vGetDesignerReviews, vDesignId, vAddDesign, vCrea
 router.post('/create-designer', authenticate, adminAccessOnly, validate(vCreateDesigner), createDesigner);
 router.post('/get-designer', authenticate, validate(vDesignerId), getDesigner);
 router.post('/create-designer-review', authenticate, validate(vCreateDesignerReview), createDesignerReview);
-router.post('/designer-reviews', validate(vGetDesignerReviews), getDesignerReviews);
+router.post('/designer-reviews', authenticate, validate(vGetDesignerReviews), getDesignerReviews);
 router.post('/add-design', authenticate, validate(vAddDesign), addDesign);
 router.post('/like-unlike-design', authenticate, validate(vDesignId), likeUnlikeDesign);
 router.post('/update-design-view', authenticate, validate(vDesignId), viewDesign);
-router.post('/get-designs', validate(vGetDesigns), getDesigns);
-router.post('/get-designers', validate(vGetDesigners), getDesigners);
+router.post('/get-designs', authenticate, validate(vGetDesigns), getDesigns);
+router.post('/get-designers', authenticate, validate(vGetDesigners), getDesigners);
 
 
 module.exports = router;

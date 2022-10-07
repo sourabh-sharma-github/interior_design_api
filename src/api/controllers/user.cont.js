@@ -49,7 +49,7 @@ const socialSignUp = async (req, res) => {
         if (!user) {
             user = await createUser({ ...req.body })
         } else {
-            await updateUser({ ...req.body }, user.id)
+            user =await updateUser({ ...req.body }, user.id)
         }
         const token = user.getJWT();
         return __SSR(res, "Signup successfully.", {

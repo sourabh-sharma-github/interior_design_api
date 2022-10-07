@@ -12,6 +12,10 @@ module.exports = (sequelize, Sequelize) => {
         propertyTypeId: {
             type: Sequelize.INTEGER,
         },
+        title: {
+            type: Sequelize.STRING,
+            defaultValue: null
+        }, 
         packageIncludes: {
             type: Sequelize.STRING,
         },
@@ -38,6 +42,11 @@ module.exports = (sequelize, Sequelize) => {
 
     
     Designs.associate = (models) => {
+        Designs.hasOne(models.Designer, {
+            sourceKey: 'designerId',
+            foreignKey: 'id',
+            as: 'designer'
+        })
         Designs.hasMany(models.DesignsImages, {
             sourceKey: 'id',
             foreignKey: 'designId',

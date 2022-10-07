@@ -15,6 +15,10 @@ module.exports = (sequelize, Sequelize) => {
         imageInspirationType: {
             type: Sequelize.INTEGER,
         },
+        areaRange: {
+            type: Sequelize.STRING,
+            defaultValue: null,
+        },
     }, {
         paranoid: true,
         deletedAt: "deletedAt",

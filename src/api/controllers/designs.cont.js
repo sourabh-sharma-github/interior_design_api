@@ -173,17 +173,55 @@ const addDesign = async (req, res) => {
 
 const getDesigns = async (req, res) => {
     try {
-        const { designerId, propertyTypeId, trendingTypes } = req.body;
+        const { designerId, propertyTypeId, trendingTypes, budget, areaRange, imageInspirationType } = req.body;
+
 
         let where = new Object;
         if (designerId) where['designerId'] = designerId;
         if (propertyTypeId) where['designerId'] = propertyTypeId;
 
+
+        if (budget) {
+            switch (budget) {
+                case 1:
+                    where['price'] = {
+                        [Op.lte]: 25000
+                    }; break;
+                case 2:
+                    where['price'] = {
+                        [Op.between]: [30000, 40000]
+                    }; break;
+                case 3:
+                    where['price'] = {
+                        [Op.between]: [40000, 60000]
+                    }; break;
+                case 4:
+                    where['price'] = {
+                        [Op.between]: [60000, 100000]
+                    }; break;
+                case 5:
+                    where['price'] = {
+                        [Op.gte]: 100000
+                    }; break;
+            }
+        }
+
         let include = [{
+            model: Designer,
+            as: 'designer',
+            required: true
+        }, {
             model: DesignsImages,
             as: 'design_images',
             required: true
         }]
+
+        if (areaRange){
+            include[1]['where']['areaRange'] = areaRange
+        }
+        if (imageInspirationType){
+            include[1]['where']['imageInspirationType'] = imageInspirationType
+        }
 
         if (trendingTypes && trendingTypes.length) {
             include.push({
@@ -212,7 +250,7 @@ const getDesigns = async (req, res) => {
     }
 }
 
-const getDesigners = async (req, res)=>{
+const getDesigners = async (req, res) => {
     try {
 
         const { count, rows } = await Designer.findAndCountAll()

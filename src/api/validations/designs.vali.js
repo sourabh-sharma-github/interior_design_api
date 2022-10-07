@@ -54,11 +54,13 @@ module.exports = {
             designerId: Joi.number().required(),
             images: Joi.array().items({
                 imageUrl: Joi.string().required(),
-                imageInspirationType: Joi.number().required()
+                imageInspirationType: Joi.number().required(),
+                areaRange: Joi.string().required()
             }).min(1).required(),
             trendingTypes: Joi.array().items(Number).min(1).required(),
             propertyTypeId: Joi.number().required(),
             packageIncludes: Joi.string().required(),
+            title: Joi.string().required(),
             description: Joi.string().required(),
             price: Joi.number().required(),
         }).required()
@@ -70,6 +72,9 @@ module.exports = {
             designerId: Joi.number().optional(),
             propertyTypeId: Joi.number().optional(),
             trendingTypes: Joi.array().items(Number).min(1).optional(),
+            budget: Joi.number().valid(1, 2, 3, 4, 5).optional(),
+            areaRange: Joi.string().optional(),
+            imageInspirationType: Joi.number().optional()
         }).required()
     },
     vGetDesigners: {
