@@ -30,5 +30,13 @@ module.exports = (sequelize, Sequelize) => {
         tableName: "inspirations"
     });
 
+    Inspirations.associate = (models) => {
+        Inspirations.hasOne(models.Designer, {
+            sourceKey: 'type',
+            foreignKey: 'id',
+            as: 'master_insipiration'
+        })
+    }
+
     return Inspirations;
 };

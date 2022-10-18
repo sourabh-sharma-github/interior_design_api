@@ -1,4 +1,4 @@
-const { Inspirations } = require('../../models');
+const { Inspirations, HouseTypes } = require('../../models');
 
 const updateInspirations = async (data) => {
     return await Inspirations.upsert(data)
@@ -21,7 +21,12 @@ const inspirationsData = async (limit, offset, search) => {
         offset,
         attributes: {
             exclude: ['updatedAt', 'deletedAt']
-        }
+        },
+        include: [{
+            model: HouseTypes,
+            as: 'master_insipiration',
+            required: false,
+        }]
     })
 }
 
