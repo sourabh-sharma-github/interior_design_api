@@ -7,6 +7,7 @@ module.exports = {
             title: Joi.string().required(),
             description: Joi.string().required(),
             video_url: Joi.string().required(),
+            updatedAt: Joi.optional(),
             deletedAt: Joi.string().optional(),
         }).required()
     },
