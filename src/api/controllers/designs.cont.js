@@ -11,6 +11,29 @@ const createDesigner = async (req, res) => {
     }
 }
 
+const deleteDesigner = async (req, res) => {
+    try {
+        const { id } = req.body;
+        await Promise.all([
+            Designer.destroy({
+                where: { id}
+            }),
+            Designs.destroy({
+                where: {designerId: id}
+            }),
+            DesignerReviews.destroy({
+                where: {designerId: id}
+            }),
+            DesignerReviewsImages.destroy({
+                where: {designerId: id}
+            }),
+        ])
+        return __SSR(res, "Deleted suceessfully!");
+    } catch (error) {
+        return __SFR(res, 400, error.message, error)
+    }
+}
+
 const getDesigner = async (req, res) => {
     try {
         const { designerId } = req.body;
@@ -180,10 +203,10 @@ const deleteDesign = async (req, res) => {
                 where: { id }
             }),
             DesignsImages.destroy({
-                where: {designId: id}
+                where: { designId: id }
             }),
             DesignTrendingTypes.destroy({
-                where: {designId: id}
+                where: { designId: id }
             })
         ])
 
@@ -286,5 +309,5 @@ const getDesigners = async (req, res) => {
 
 module.exports = {
     likeUnlikeDesign, viewDesign, createDesigner, getDesigner, createDesignerReview,
-    getDesignerReviews, addDesign, getDesigns, getDesigners, deleteDesign
+    getDesignerReviews, addDesign, getDesigns, getDesigners, deleteDesign, deleteDesigner
 }

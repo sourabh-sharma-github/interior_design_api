@@ -7,10 +7,11 @@ const { adminAccessOnly } = require('../../middlewares/adminValidator')
 
 const authenticate = passport.authenticate('jwt', { session: false });
 
-const { createDesigner, deleteDesign, getDesigner, createDesignerReview, getDesignerReviews, likeUnlikeDesign, viewDesign, addDesign, getDesigns, getDesigners } = require('../controllers/designs.cont');
+const { createDesigner, deleteDesign,deleteDesigner, getDesigner, createDesignerReview, getDesignerReviews, likeUnlikeDesign, viewDesign, addDesign, getDesigns, getDesigners } = require('../controllers/designs.cont');
 const { vCreateDesignerReview, vDeleteDesign, vGetDesignerReviews, vDesignId, vAddDesign, vCreateDesigner, vDesignerId, vGetDesigns, vGetDesigners } = require('../validations/designs.vali');
 
 router.post('/create-designer', authenticate, adminAccessOnly, validate(vCreateDesigner), createDesigner);
+router.post('/delete-designer', authenticate, adminAccessOnly, validate(vDeleteDesign), deleteDesigner);
 router.post('/get-designer', authenticate, validate(vDesignerId), getDesigner);
 router.post('/create-designer-review', authenticate, validate(vCreateDesignerReview), createDesignerReview);
 router.post('/designer-reviews', authenticate, validate(vGetDesignerReviews), getDesignerReviews);
