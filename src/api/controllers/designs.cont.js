@@ -171,6 +171,28 @@ const addDesign = async (req, res) => {
     }
 }
 
+const deleteDesign = async (req, res) => {
+    try {
+        let { id } = req.body;
+
+        await Promise.all([
+            Designs.destroy({
+                where: { id }
+            }),
+            DesignsImages.destroy({
+                where: {designId: id}
+            }),
+            DesignTrendingTypes.destroy({
+                where: {designId: id}
+            })
+        ])
+
+        return __SSR(res, "Deleted successfully.");
+    } catch (error) {
+        return __SFR(res, 400, error.message, error)
+    }
+}
+
 const getDesigns = async (req, res) => {
     try {
         const { designerId, propertyTypeId, trendingTypes, budget, areaRange, imageInspirationType } = req.body;
@@ -216,10 +238,10 @@ const getDesigns = async (req, res) => {
             required: true
         }]
 
-        if (areaRange){
+        if (areaRange) {
             include[1]['where']['areaRange'] = areaRange
         }
-        if (imageInspirationType){
+        if (imageInspirationType) {
             include[1]['where']['imageInspirationType'] = imageInspirationType
         }
 
@@ -264,5 +286,5 @@ const getDesigners = async (req, res) => {
 
 module.exports = {
     likeUnlikeDesign, viewDesign, createDesigner, getDesigner, createDesignerReview,
-    getDesignerReviews, addDesign, getDesigns, getDesigners
+    getDesignerReviews, addDesign, getDesigns, getDesigners, deleteDesign
 }

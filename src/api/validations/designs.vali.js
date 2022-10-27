@@ -65,6 +65,11 @@ module.exports = {
             price: Joi.number().required(),
         }).required()
     },
+    vDeleteDesign: {
+        body: Joi.object({
+            id: Joi.number().required()
+        }).required()
+    },
     vGetDesigns: {
         body: Joi.object({
             limit: Joi.number().required(),
