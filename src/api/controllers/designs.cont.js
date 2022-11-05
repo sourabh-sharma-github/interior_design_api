@@ -220,11 +220,11 @@ const getDesigns = async (req, res) => {
     try {
         const { designerId, propertyTypeId, trendingTypes, budget, areaRange, imageInspirationType } = req.body;
 
-
         let where = new Object;
+        let DesignsImagesWhere = new Object
         if (designerId) where['designerId'] = designerId;
         if (propertyTypeId) where['designerId'] = propertyTypeId;
-
+        if (imageInspirationType) DesignsImagesWhere['imageInspirationType'] = imageInspirationType
 
         if (budget) {
             switch (budget) {
@@ -258,6 +258,7 @@ const getDesigns = async (req, res) => {
         }, {
             model: DesignsImages,
             as: 'design_images',
+            where: DesignsImagesWhere,
             required: true
         }]
 

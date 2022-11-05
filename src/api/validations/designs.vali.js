@@ -79,7 +79,7 @@ module.exports = {
             trendingTypes: Joi.array().items(Number).min(1).optional(),
             budget: Joi.number().valid(1, 2, 3, 4, 5).optional(),
             areaRange: Joi.string().optional(),
-            imageInspirationType: Joi.number().optional()
+            imageInspirationType: Joi.optional()
         }).required()
     },
     vGetDesigners: {
