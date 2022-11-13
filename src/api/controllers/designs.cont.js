@@ -263,7 +263,12 @@ const getDesigns = async (req, res) => {
         }, {
             model: PropertyTypes,
             as: 'property_type',
-            required: true
+            required: true,
+            attributes: ['id', 'title']
+        }, {
+            model: DesignTrendingTypes,
+            as: 'trending_types',
+            required: false
         }]
 
         if (areaRange) {
