@@ -56,7 +56,12 @@ module.exports = (sequelize, Sequelize) => {
             sourceKey: 'id',
             foreignKey: 'designId',
             as: 'trending_types'
-        })
+        }),
+        Designs.hasOne(models.PropertyTypes, {
+            sourceKey: 'propertyTypeId',
+            foreignKey: 'id',
+            as: 'property_type'
+        })       
     }
 
     return Designs;

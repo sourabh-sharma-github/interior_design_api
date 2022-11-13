@@ -1,4 +1,4 @@
-const { UserDesignLikes, UserDesignViews, Designs, DesignsImages, Designer, DesignerReviews, DesignerReviewsImages, DesignTrendingTypes } = require('../../models');
+const { UserDesignLikes, UserDesignViews,PropertyTypes, Designs, DesignsImages, Designer, DesignerReviews, DesignerReviewsImages, DesignTrendingTypes } = require('../../models');
 const { __SSR, __SFR } = require('../../services/req-res.service')
 const { Op, literal } = require("sequelize");
 
