@@ -38,6 +38,7 @@ module.exports = (sequelize, Sequelize) => {
         deletedAt: "deletedAt",
         timestamps: true,
         tableName: "designs"
+        
     });
 
     
