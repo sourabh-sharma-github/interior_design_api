@@ -260,6 +260,10 @@ const getDesigns = async (req, res) => {
             as: 'design_images',
             where: DesignsImagesWhere,
             required: true
+        }, {
+            model: PropertyTypes,
+            as: 'property_type',
+            required: true
         }]
 
         if (areaRange) {
