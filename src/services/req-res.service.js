@@ -2,6 +2,7 @@ const __SSR = (res, message, data) => {
     let send = {
         success: true,
         message,
+        
         data
     };
 

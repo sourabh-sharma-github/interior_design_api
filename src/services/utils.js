@@ -5,3 +5,4 @@ const random_otp = () => {
 module.exports = {
     random_otp
 }
+

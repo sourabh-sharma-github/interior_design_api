@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const emailConfig = require("../config/mailer.json")[process.env.NODE_ENV || "development"];
 
 let transporter = nodemailer.createTransport(emailConfig);
+
 const _SEND_EMAIL = async(emailOpts) => {
     try {
         let info = await transporter.sendMail({

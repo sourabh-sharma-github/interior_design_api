@@ -9,6 +9,7 @@ module.exports = (sequelize, Sequelize) => {
         designerReviewId: {
             type: Sequelize.INTEGER,
         },
+        
         imageUrl: {
             type: Sequelize.STRING,
         },

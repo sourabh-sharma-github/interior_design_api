@@ -1,6 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
     const Advertisements = sequelize.define("Advertisements", {
         id: {
+            
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
