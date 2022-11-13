@@ -268,6 +268,7 @@ const getDesigns = async (req, res) => {
         }, {
             model: DesignTrendingTypes,
             as: 'trending_types',
+            
             required: false
         }]
 
