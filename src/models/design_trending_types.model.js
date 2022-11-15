@@ -19,15 +19,5 @@ module.exports = (sequelize, Sequelize) => {
         tableName: "design_trendingTypes"
     });
 
-    DesignTrendingTypes.associate = (models) => {
-        DesignTrendingTypes.hasOne(models.PropertyTypes, {
-            sourceKey: 'propertyTypeId',
-            foreignKey: 'id',
-            as: 'property_type'
-            
-        })       
-    }
-
-
     return DesignTrendingTypes;
 };
