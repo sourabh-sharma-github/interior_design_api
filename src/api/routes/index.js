@@ -13,6 +13,7 @@ const trendingRouter = require('./trending.route')
 const designsRouter = require('./designs.route')
 const propertyTypesRouter = require('./property_types.route')
 const trendingTypesRouter = require('./trending_types.route')
+const userChatbotAnswersRouter = require('./user_chatbot_answers.route')
 
 router.use("/auth", authenticationRouter)
 router.use("/house-types", houseTypesRouter)
@@ -27,6 +28,7 @@ router.use('/trendings', trendingRouter)
 router.use('/designs', designsRouter)
 router.use("/property-types", propertyTypesRouter)
 router.use("/trending-types", trendingTypesRouter)
+router.use("/chat-bot", userChatbotAnswersRouter)
 
 
 module.exports = router;
