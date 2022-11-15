@@ -19,8 +19,8 @@ module.exports = (sequelize, Sequelize) => {
         tableName: "design_trendingTypes"
     });
 
-    Designs.associate = (models) => {
-        Designs.hasOne(models.PropertyTypes, {
+    DesignTrendingTypes.associate = (models) => {
+        DesignTrendingTypes.hasOne(models.PropertyTypes, {
             sourceKey: 'propertyTypeId',
             foreignKey: 'id',
             as: 'property_type'
