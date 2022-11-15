@@ -2,12 +2,11 @@ const { Joi } = require('express-validation');
 module.exports = {
     vCreateUpdateDeleteUserChatbotAnswers: {
         body: Joi.object({
-            id: Joi.number().optional(),
-            full_name: Joi.string().required(),
             email: Joi.string().email().required(),
-            property_type: Joi.number().required(),
-            budget: Joi.number().required(),
-            area_renovate: Joi.string().required(),
+            full_name: Joi.string().optional(),
+            property_type: Joi.number().optional(),
+            budget: Joi.number().optional(),
+            area_renovate: Joi.string().optional(),
         }).required()
     },
 }

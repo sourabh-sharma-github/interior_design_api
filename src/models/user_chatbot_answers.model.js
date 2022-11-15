@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         full_name: {
             type: Sequelize.STRING,
-            allowNull: false
+            defaultValue: null
         },
         email: {
             type: Sequelize.STRING,
@@ -23,15 +23,15 @@ module.exports = (sequelize, Sequelize) => {
         },
         property_type: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            defaultValue: null
         },
         budget: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            defaultValue: null
         },
         area_renovate: {
             type: Sequelize.STRING,
-            allowNull: false
+            defaultValue: null
         },
     }, {
         paranoid: true,
