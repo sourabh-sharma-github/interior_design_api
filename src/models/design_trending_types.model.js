@@ -24,6 +24,7 @@ module.exports = (sequelize, Sequelize) => {
             sourceKey: 'propertyTypeId',
             foreignKey: 'id',
             as: 'property_type'
+            
         })       
     }
 
